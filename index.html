@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <meta name="author" content="Lastbreathstudio"/>
+    <meta name="copyright" content="&amp;;copy; 2015 Lastbreathstudio">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>dots</title>
+    <style type="text/css">
+    .animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: infinite;;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    animation:flash 10s linear infinite;
+    }
+    @-webkit-keyframes flash {
+        0%, 50%, 100% {opacity: 1;}
+        25%, 75% {opacity: 0;}
+    }
+    @keyframes flash {
+        0%, 50%, 100% {opacity: 1;}
+        25%, 75% {opacity: 0;}
+    }
+    .flash {
+        -webkit-animation-name: flash;
+        animation-name: flash ;
+    }
+.aaa{
+    height:500px ;
+    width:500px;
+    background: blue;
+    margin:0 auto;
+}
+#circle {
+
+    width: 100px;
+    height: 100px;
+   border: 1px solid #999;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    behavior: url("pie/PIE.htc");
+}
+</style>
+</head>
+<body>
+<script type="text/javascript">
+
+function getRandomColor() {
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+
+
+function circle (){
+    var h = screen.height;
+    var w = screen.width;
+    var circleDiv = document.createElement("div");
+    circleDiv.style.height = 20+ "px";
+    circleDiv.style.width = 20 + "px";
+    circleDiv.style.backgroundColor = getRandomColor();
+    circleDiv.style.borderRadius = 20 + "px";
+    circleDiv.style.MozBorderRadius = 20 + "px";
+    circleDiv.style.WebkitBorderRadius = 20 + "px";
+
+    circleDiv.style.position = "absolute";
+    circleDiv.className = "animated flash";
+    circleDiv.style.zIndex = -9999;
+    circleDiv.style.top = (Math.random() * h + 1-150) + "px";
+    circleDiv.style.left = (Math.random() * w + 1-50) + "px";
+    circleDiv.id = 'circle1';
+    document.body.appendChild(circleDiv);
+    setTimeout(clear,2500);
+
+}
+
+
+
+function clear(){
+     var a = document.getElementById("circle1");
+     a.parentNode.removeChild(a);
+
+}
+
+
+for(var i = 0;i<15;i++){
+    setInterval(circle,Math.random() * 50000);
+}
+
+</script>
+  </body>
+</html>
